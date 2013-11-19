@@ -9,3 +9,17 @@ dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.0.5'
 	testCompile 'junit:junit:4.11'
 }
+
+task wrapper(type:Wrapper) {
+	gradleVersion = 1.8
+}
+
+task interceptorjar(type: Jar) {
+	from files(sourceSets.main.output.classesDir)
+	from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+
+	manifest {
+		attributes 'Main-Class': 'Interceptor'
+	}
+}
+
