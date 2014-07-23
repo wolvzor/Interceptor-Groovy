@@ -23,3 +23,5 @@ task interceptorjar(type: Jar) {
 	}
 }
 
+interceptorjar.dependsOn buildDependents
+
