@@ -19,45 +19,75 @@ class Pilot {
 	
 	private void generateBeginningSkills() {
 		Random rand = new Random()
-		switch(rand.nextInt(10)) {
+		generatePilotingSkill(rand.nextInt(10))
+		generateGunnerySkill(rand.nextInt(10))
+	}
+	
+	private void generatePilotingSkill(int randomNumber) {
+		switch(randomNumber) {
 			case 0:
 				pilotingSkill = 6
-				gunnerySkill = 6
 				break
 			case 1:
 				pilotingSkill = 5
-				gunnerySkill = 5
 				break
 			case 2:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 3:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 4:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 5:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 6:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 7:
 				pilotingSkill = 5
-				gunnerySkill = 4
 				break
 			case 8:
 				pilotingSkill = 4
-				gunnerySkill = 3
 				break
 			case 9:
 				pilotingSkill = 3
+				break
+		}
+	}
+	
+	private void generateGunnerySkill(int randomNumber) {
+		switch(randomNumber) {
+			case 0:
+				gunnerySkill = 6
+				break
+			case 1:
+				gunnerySkill = 5
+				break
+			case 2:
+				gunnerySkill = 4
+				break
+			case 3:
+				gunnerySkill = 4
+				break
+			case 4:
+				gunnerySkill = 4
+				break
+			case 5:
+				gunnerySkill = 4
+				break
+			case 6:
+				gunnerySkill = 4
+				break
+			case 7:
+				gunnerySkill = 4
+				break
+			case 8:
+				gunnerySkill = 3
+				break
+			case 9:
 				gunnerySkill = 2
 				break
 		}
