@@ -17,13 +17,13 @@ class Pilot {
 		generateBeginningSkills()
 	}
 	
-	private void generateBeginningSkills() {
+	protected void generateBeginningSkills() {
 		Random rand = new Random()
 		generatePilotingSkill(rand.nextInt(10))
 		generateGunnerySkill(rand.nextInt(10))
 	}
 	
-	private void generatePilotingSkill(int randomNumber) {
+	protected void generatePilotingSkill(int randomNumber) {
 		switch(randomNumber) {
 			case 0:
 				pilotingSkill = 6
@@ -58,7 +58,7 @@ class Pilot {
 		}
 	}
 	
-	private void generateGunnerySkill(int randomNumber) {
+	protected void generateGunnerySkill(int randomNumber) {
 		switch(randomNumber) {
 			case 0:
 				gunnerySkill = 6
