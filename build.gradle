@@ -19,7 +19,7 @@ task interceptorjar(type: Jar) {
 	from configurations.runtime.asFileTree.files.collect { zipTree(it) }
 
 	manifest {
-		attributes 'Main-Class': 'Interceptor'
+		attributes 'Main-Class': 'com.wolviegames.interceptor.Interceptor'
 	}
 }
 

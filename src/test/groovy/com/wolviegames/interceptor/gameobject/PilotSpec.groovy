@@ -1,5 +1,5 @@
 import spock.lang.Specification
-import gameobject.Pilot
+import com.wolviegames.interceptor.gameobject.Pilot
 
 class PilotSpec extends Specification{
 	

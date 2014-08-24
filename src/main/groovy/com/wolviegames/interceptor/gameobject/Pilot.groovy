@@ -1,4 +1,4 @@
-package gameobject
+package com.wolviegames.interceptor.gameobject
 
 import groovy.transform.ToString
 

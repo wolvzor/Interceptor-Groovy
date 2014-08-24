@@ -1,4 +1,5 @@
-import gameobject.Pilot
+package com.wolviegames.interceptor
+import com.wolviegames.interceptor.gameobject.Pilot;
 
 public class Interceptor {
 	public static void main(String[] args) {
