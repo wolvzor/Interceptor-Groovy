@@ -16,7 +16,17 @@ class Fighter {
 	Boolean streamlined
 	
 	// Shields
+	Integer bowShield
+	Integer rightShield
+	Integer leftShield
+	Integer sternShield
+	
 	// Armor
+	Armor bowArmor 
+	Armor rightArmor
+	Armor leftArmor
+	Armor sternArmor
+	
 	// Weapons
 	
 	Integer velocity
