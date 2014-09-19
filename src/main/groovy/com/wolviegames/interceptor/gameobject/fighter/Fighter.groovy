@@ -1,11 +1,16 @@
 package com.wolviegames.interceptor.gameobject.fighter
 
+import com.wolviegames.interceptor.gameobject.Gunner
+import com.wolviegames.interceptor.gameobject.Pilot
 import groovy.transform.ToString;
 
 @ToString
 class Fighter {
 	
-	// TODO figure out relationship between fighter and pilot/gunner
+	// TODO verify relationship between fighter and pilot/gunner
+	Pilot pilot
+	Gunner gunner
+	
 	String faction // (enumeration laters?)
 	String name
 	Integer mass
