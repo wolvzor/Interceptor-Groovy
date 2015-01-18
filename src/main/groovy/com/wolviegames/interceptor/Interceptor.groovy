@@ -19,7 +19,7 @@ public class Interceptor{
 
 		JFrame jFrame = new JFrame("Interceptor Demo");
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jFrame.setSize(250,250);
+		jFrame.setSize(PWIDTH,PHEIGHT);
 		jFrame.add(gamePanel)
 		jFrame.setVisible(true);
 
