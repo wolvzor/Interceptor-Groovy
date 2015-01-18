@@ -74,9 +74,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 
         try {
-            // Drawing the ship will be in its own class soon >.>
-            Image image = ImageIO.read(getClass().getClassLoader().getResource("ship.gif"));
-            dbg.drawImage(image, 30, 30, null);
+            // TODO make this go through a loop of applicable game objects
+            fighter.draw(dbg)
+
         } catch(IOException e){
             System.out.println("Load image error.");
             System.exit(1);
