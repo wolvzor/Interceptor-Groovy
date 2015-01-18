@@ -4,16 +4,15 @@ import javax.imageio.ImageIO
 import java.awt.Graphics
 import java.awt.Image
 
-class Fighter {
+class HexTile {
 
     Image image;
 
-    Fighter() {
-        image = ImageIO.read(getClass().getClassLoader().getResource("ship.gif"));
+    HexTile() {
+        image = ImageIO.read(getClass().getClassLoader().getResource("HexTile.png"));
     }
 
     public void draw(Graphics graphics) {
-        graphics.drawImage(image, 60, 120, null);
+        graphics.drawImage(image, 30, 30, null);
     }
-
 }
