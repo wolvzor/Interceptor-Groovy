@@ -13,7 +13,7 @@ class Fighter {
     }
 
     public void draw(Graphics graphics) {
-        graphics.drawImage(image, 60, 120, null);
+        graphics.drawImage(image, 30, 90, null);
     }
 
 }

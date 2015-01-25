@@ -72,10 +72,11 @@ public class GamePanel extends JPanel implements Runnable {
         dbg.drawString("Interceptor!", 20, 25);
         dbg.setColor(Color.black);
 
-        HexTile hexTile = new HexTile()
+        //HexTile hexTile = new HexTile()
+        HexGrid hexGrid = new HexGrid()
 
         try {
-            hexTile.draw(dbg)
+            hexGrid.draw(dbg)
             // TODO make this go through a loop of applicable game objects
             fighter.draw(dbg)
 

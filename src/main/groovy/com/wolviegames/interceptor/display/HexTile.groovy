@@ -15,4 +15,8 @@ class HexTile {
     public void draw(Graphics graphics) {
         graphics.drawImage(image, 30, 30, null);
     }
+
+    public void draw(Graphics graphics, int xCoord, int yCoord) {
+        graphics.drawImage(image, xCoord, yCoord, null);
+    }
 }
