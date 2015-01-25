@@ -71,8 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         dbg.drawString("Interceptor!", 20, 25);
         dbg.setColor(Color.black);
-
-        //HexTile hexTile = new HexTile()
+        
         HexGrid hexGrid = new HexGrid()
 
         try {

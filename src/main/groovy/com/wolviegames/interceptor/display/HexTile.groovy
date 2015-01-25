@@ -17,7 +17,6 @@ class HexTile {
     }
 
     public void draw(Graphics graphics, int xCoord, int yCoord, double scale=1.0) {
-        //graphics.drawImage(image, xCoord, yCoord, null);
         graphics.drawImage(image, xCoord, yCoord, (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
     }
 }
