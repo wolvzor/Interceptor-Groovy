@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements Runnable {
         HexGrid hexGrid = new HexGrid()
 
         try {
-            hexGrid.draw(dbg)
+            hexGrid.draw(dbg, width, height)
             // TODO make this go through a loop of applicable game objects
             fighter.draw(dbg)
 

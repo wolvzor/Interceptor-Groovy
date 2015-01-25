@@ -5,22 +5,39 @@ import java.awt.*;
 public class HexGrid {
 
     HexTile hexTile;
+    int HEX_HEIGHT = 384
+    int HEX_WIDTH = 256
+    double scale = 1.0
+    int scaledHeight = HEX_HEIGHT
+    int scaledWidth = HEX_WIDTH
 
     HexGrid() {
-        hexTile = new HexTile();
+        hexTile = new HexTile()
     }
 
-    public void draw(Graphics graphics){
-        // Going to draw some basic hexTiles for now
-        // TODO Make this a proper grid later.
-        hexTile.draw(graphics, 0,0);
-        hexTile.draw(graphics, 256, 0);
-        hexTile.draw(graphics, 512, 0);
-        hexTile.draw(graphics, 768, 0);
-        hexTile.draw(graphics, 0,384);
-        hexTile.draw(graphics, 256, 384);
-        hexTile.draw(graphics, 512, 384);
-        hexTile.draw(graphics, 768, 384);
+    HexGrid(double scale){
+        hexTile = new HexTile()
+        this.scale = scale
+        changeScale(scale)
+    }
+
+    public void changeScale(double scale){
+        this.scale = scale
+        scaledHeight = (HEX_HEIGHT * scale).intValue()
+        scaledWidth = (HEX_WIDTH * scale).intValue()
+    }
+
+    public void draw(Graphics graphics, int screenWidth, int screenHeight){
+        int height = 0
+        int width
+        while(height < screenHeight) {
+            width = 0
+            while(width < screenWidth) {
+                hexTile.draw(graphics, width, height, scale)
+                width += scaledWidth
+            }
+            height += scaledHeight
+        }
     }
 
 }
