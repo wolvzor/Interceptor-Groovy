@@ -1,4 +1,6 @@
-package com.wolviegames.interceptor.display;
+package com.wolviegames.interceptor.display
+
+import com.wolviegames.interceptor.system.Coordinates;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +15,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     BufferedImage dbImage;
     Graphics dbg;
+    // TODO Will make these fighters into a collection laters!
     Fighter fighter;
+    Fighter fighter2;
+    Fighter fighter3;
     int width;
     int height;
 
@@ -27,7 +32,9 @@ public class GamePanel extends JPanel implements Runnable {
         readyForTermination();
 
         // Create game components
-        fighter = new Fighter();
+        fighter = new Fighter(new Coordinates(xCoord:0, yCoord:0));
+        fighter2 = new Fighter(new Coordinates(xCoord:2, yCoord:0));
+        fighter3 = new Fighter(new Coordinates(xCoord:2, yCoord:2));
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
@@ -71,13 +78,15 @@ public class GamePanel extends JPanel implements Runnable {
 
         dbg.drawString("Interceptor!", 20, 25);
         dbg.setColor(Color.black);
-        
+
         HexGrid hexGrid = new HexGrid()
 
         try {
             hexGrid.draw(dbg, width, height)
             // TODO make this go through a loop of applicable game objects
             fighter.draw(dbg)
+            fighter2.draw(dbg)
+            fighter3.draw(dbg)
 
         } catch(IOException e){
             System.out.println("Load image error.");
