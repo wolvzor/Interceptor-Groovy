@@ -1,15 +1,15 @@
-package com.wolviegames.interceptor.display;
+package com.wolviegames.interceptor.display
+
+import com.wolviegames.interceptor.system.GlobalValues;
 
 import java.awt.*;
 
 public class HexGrid {
 
     HexTile hexTile;
-    int HEX_HEIGHT = 384
-    int HEX_WIDTH = 256
     double scale = 1.0
-    int scaledHeight = HEX_HEIGHT
-    int scaledWidth = HEX_WIDTH
+    int scaledHeight = GlobalValues.HEX_HEIGHT
+    int scaledWidth = GlobalValues.HEX_WIDTH
 
     HexGrid() {
         hexTile = new HexTile()
@@ -23,8 +23,8 @@ public class HexGrid {
 
     public void changeScale(double scale){
         this.scale = scale
-        scaledHeight = (HEX_HEIGHT * scale).intValue()
-        scaledWidth = (HEX_WIDTH * scale).intValue()
+        scaledHeight = (GlobalValues.HEX_HEIGHT * scale).intValue()
+        scaledWidth = (GlobalValues.HEX_WIDTH * scale).intValue()
     }
 
     public void draw(Graphics graphics, int screenWidth, int screenHeight){
