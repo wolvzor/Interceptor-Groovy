@@ -12,7 +12,7 @@ class Fighter {
     Coordinates coordinates
 
     Fighter(Coordinates coordinates) {
-        image = ImageIO.read(getClass().getClassLoader().getResource("ship.gif"));
+        image = ImageIO.read(getClass().getClassLoader().getResource("fighter/Avenger_small.gif"));
         this.coordinates = coordinates
     }
 
