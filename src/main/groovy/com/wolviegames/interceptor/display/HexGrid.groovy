@@ -28,13 +28,18 @@ public class HexGrid {
         scaledWidth = (GlobalValues.HEX_WIDTH * scale).intValue()
     }
 
-    public void draw(Graphics graphics, int screenWidth, int screenHeight){
-        int height = 0
+    public void draw(Graphics graphics, int screenWidth, int screenHeight, DrawingOffset drawingOffset){
+        // Calculate where the first grid should really be drawn.
+        double modulo_height = drawingOffset.height_offset % GlobalValues.HEX_HEIGHT
+        double modulo_width = drawingOffset.width_offset % GlobalValues.HEX_WIDTH
+        int height = 0 - (modulo_height* GlobalValues.HEX_HEIGHT)
+
+
         int width
         while(height < screenHeight) {
-            width = 0
+            width = 0 - (modulo_width * GlobalValues.HEX_WIDTH)
             while(width < screenWidth) {
-                hexTile.draw(graphics, width, height, scale)
+                hexTile.draw(graphics, width, height, scale, drawingOffset)
                 width += scaledWidth
             }
             height += scaledHeight

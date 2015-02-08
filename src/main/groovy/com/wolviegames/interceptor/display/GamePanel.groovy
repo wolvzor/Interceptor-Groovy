@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
     int height;
     double scale = 0.5;
     LoadResources resources;
+    DrawingOffset drawingOffset = new DrawingOffset(width_offset: 300, height_offset: 200)
 
     public GamePanel(long period, int width, int height) {
         this.width = width;
@@ -47,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
         renegadeTeam.addFighter(resources.getFighter("Peacekeeper_small.gif", new Coordinates(xCoord:2, yCoord:2)))
+        renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1)))
         teams.add(renegadeTeam)
 
         addMouseListener(new MouseAdapter() {
@@ -95,11 +97,11 @@ public class GamePanel extends JPanel implements Runnable {
         HexGrid hexGrid = new HexGrid(scale)
 
         try {
-            hexGrid.draw(dbg, width, height)
+            hexGrid.draw(dbg, width, height, drawingOffset)
             // TODO make this go through a loop of applicable game objects
             for(Team team: teams){
                 for(Fighter fighter: team.getFighters()){
-                    fighter.draw(dbg, scale)
+                    fighter.draw(dbg, scale, drawingOffset)
                 }
             }
 

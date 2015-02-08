@@ -1,5 +1,6 @@
 package com.wolviegames.interceptor.game
 
+import com.wolviegames.interceptor.display.DrawingOffset
 import com.wolviegames.interceptor.system.Coordinates
 
 import javax.imageio.ImageIO
@@ -26,8 +27,8 @@ class Fighter {
         this.coordinates = coordinates
     }
 
-    public void draw(Graphics graphics, double scale = 1.0) {
-        coordinates.drawAtCoordinates(graphics, image, scale)
+    public void draw(Graphics graphics, double scale = 1.0, DrawingOffset drawingOffset) {
+        coordinates.drawAtCoordinates(graphics, image, scale, drawingOffset)
     }
 
 }
