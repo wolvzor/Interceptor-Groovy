@@ -1,6 +1,7 @@
 package com.wolviegames.interceptor.display
 
-import com.wolviegames.interceptor.system.Coordinates;
+import com.wolviegames.interceptor.system.Coordinates
+import com.wolviegames.interceptor.system.ImageResources;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     Fighter fighter3;
     int width;
     int height;
+    ImageResources imageResources;
 
     public GamePanel(long period, int width, int height) {
         this.width = width;
@@ -30,6 +32,9 @@ public class GamePanel extends JPanel implements Runnable {
         setFocusable(true);
         requestFocus();
         readyForTermination();
+
+        // Load images
+        imageResources = new ImageResources();
 
         // Create game components
         fighter = new Fighter(new Coordinates(xCoord:0, yCoord:0));
