@@ -7,12 +7,13 @@ import java.awt.*;
 public class HexGrid {
 
     HexTile hexTile;
-    double scale = 1.0
-    int scaledHeight = GlobalValues.HEX_HEIGHT
-    int scaledWidth = GlobalValues.HEX_WIDTH
+    double scale =1.0
+    int scaledHeight
+    int scaledWidth
 
     HexGrid() {
         hexTile = new HexTile()
+        changeScale(scale)
     }
 
     HexGrid(double scale){

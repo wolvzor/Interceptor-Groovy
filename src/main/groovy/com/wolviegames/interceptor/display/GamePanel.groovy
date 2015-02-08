@@ -22,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     List<Team> teams
     int width;
     int height;
+    double scale = 0.5;
     LoadResources resources;
 
     public GamePanel(long period, int width, int height) {
@@ -91,14 +92,14 @@ public class GamePanel extends JPanel implements Runnable {
         dbg.drawString("Interceptor!", 20, 25);
         dbg.setColor(Color.black);
 
-        HexGrid hexGrid = new HexGrid()
+        HexGrid hexGrid = new HexGrid(scale)
 
         try {
             hexGrid.draw(dbg, width, height)
             // TODO make this go through a loop of applicable game objects
             for(Team team: teams){
                 for(Fighter fighter: team.getFighters()){
-                    fighter.draw(dbg)
+                    fighter.draw(dbg, scale)
                 }
             }
 

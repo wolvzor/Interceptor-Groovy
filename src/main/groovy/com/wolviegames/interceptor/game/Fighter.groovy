@@ -26,8 +26,8 @@ class Fighter {
         this.coordinates = coordinates
     }
 
-    public void draw(Graphics graphics) {
-        coordinates.drawAtCoordinates(graphics, image)
+    public void draw(Graphics graphics, double scale = 1.0) {
+        coordinates.drawAtCoordinates(graphics, image, scale)
     }
 
 }

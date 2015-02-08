@@ -14,8 +14,11 @@ class Coordinates {
 
     void drawAtCoordinates(Graphics graphics, Image image, double scale = 1.0){
         offset = (yCoord == 0) ? 1 : yCoord % 2 -1
-        graphics.drawImage(image, ((xCoord*GlobalValues.HEX_WIDTH) + (GlobalValues.HEX_WIDTH / 2 * offset) - image.getWidth()/2).intValue(),
-                ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()).intValue() + GlobalValues.HEX_HEIGHT_OFFSET,
+
+        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + (GlobalValues.HEX_WIDTH / 2 * offset) - image.getWidth()/2));
+        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()) + GlobalValues.HEX_HEIGHT_OFFSET;
+
+        graphics.drawImage(image, (xDimension * scale).intValue(), (yDimension * scale).intValue(),
                 (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
     }
 }
