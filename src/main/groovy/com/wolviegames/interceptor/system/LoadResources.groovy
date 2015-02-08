@@ -27,12 +27,10 @@ public class LoadResources {
             Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(basicPath);
             while (imageEnumeration.hasMoreElements()) {
                 directory = imageEnumeration.nextElement();
-                System.out.println(directory.getPath());
                 File fileMetaInf=new File(directory.toURI());
 
                 List<File> files= Arrays.asList(fileMetaInf.listFiles());
                 for(File file: files) {
-                    System.out.println(file.getName());
                     image = ImageIO.read(file);
                     imageMap.put(file.getName(), image);
                     fighterMap.put(file.getName(), new Fighter(image));
@@ -55,7 +53,7 @@ public class LoadResources {
     }
 
     public Fighter getFighter(String fighterName, Coordinates initialCoordinates){
-        Fighter fighter = fighterMap.get(fighterName);
+        Fighter fighter = getFighter(fighterName);
         fighter.setCoordinates(initialCoordinates);
         return fighter
     }

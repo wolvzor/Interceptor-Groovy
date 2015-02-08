@@ -1,7 +1,6 @@
 package com.wolviegames.interceptor.game
 
 import com.wolviegames.interceptor.system.Coordinates
-import com.wolviegames.interceptor.system.GlobalValues
 
 import javax.imageio.ImageIO
 import java.awt.Graphics
