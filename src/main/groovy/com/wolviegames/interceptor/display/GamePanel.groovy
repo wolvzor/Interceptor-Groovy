@@ -1,28 +1,28 @@
 package com.wolviegames.interceptor.display
 
+import com.wolviegames.interceptor.game.Faction
+import com.wolviegames.interceptor.game.Fighter
+import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.system.Coordinates
-import com.wolviegames.interceptor.system.ImageResources;
+import com.wolviegames.interceptor.system.LoadResources
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
+import java.awt.image.BufferedImage
 
 public class GamePanel extends JPanel implements Runnable {
 
-    BufferedImage dbImage;
-    Graphics dbg;
-    // TODO Will make these fighters into a collection laters!
-    Fighter fighter;
-    Fighter fighter2;
-    Fighter fighter3;
+    BufferedImage dbImage
+    Graphics dbg
+    List<Team> teams
     int width;
     int height;
-    ImageResources imageResources;
+    LoadResources resources;
 
     public GamePanel(long period, int width, int height) {
         this.width = width;
@@ -33,13 +33,20 @@ public class GamePanel extends JPanel implements Runnable {
         requestFocus();
         readyForTermination();
 
-        // Load images
-        imageResources = new ImageResources();
+        // Load resources
+        resources = new LoadResources();
 
-        // Create game components
-        fighter = new Fighter(new Coordinates(xCoord:0, yCoord:0));
-        fighter2 = new Fighter(new Coordinates(xCoord:2, yCoord:0));
-        fighter3 = new Fighter(new Coordinates(xCoord:2, yCoord:2));
+        // Create teams
+        teams = new ArrayList<Team>()
+
+        Team togTeam = new Team("First Team", Faction.TOG)
+        togTeam.addFighter(resources.getFighter("Spiculum_small.gif", new Coordinates(xCoord:0, yCoord:0)));
+        togTeam.addFighter(resources.getFighter("Verutum_small.gif", new Coordinates(xCoord:2, yCoord:0)));
+        teams.add(togTeam)
+
+        Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
+        renegadeTeam.addFighter(resources.getFighter("Peacekeeper_small.gif", new Coordinates(xCoord:2, yCoord:2)))
+        teams.add(renegadeTeam)
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
@@ -89,9 +96,11 @@ public class GamePanel extends JPanel implements Runnable {
         try {
             hexGrid.draw(dbg, width, height)
             // TODO make this go through a loop of applicable game objects
-            fighter.draw(dbg)
-            fighter2.draw(dbg)
-            fighter3.draw(dbg)
+            for(Team team: teams){
+                for(Fighter fighter: team.getFighters()){
+                    fighter.draw(dbg)
+                }
+            }
 
         } catch(IOException e){
             System.out.println("Load image error.");

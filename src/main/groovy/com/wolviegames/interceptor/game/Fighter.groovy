@@ -1,6 +1,7 @@
-package com.wolviegames.interceptor.display
+package com.wolviegames.interceptor.game
 
 import com.wolviegames.interceptor.system.Coordinates
+import com.wolviegames.interceptor.system.GlobalValues
 
 import javax.imageio.ImageIO
 import java.awt.Graphics
@@ -16,9 +17,18 @@ class Fighter {
         this.coordinates = coordinates
     }
 
+    Fighter(Image image){
+        this.image = image;
+        coordinates = new Coordinates(0,0,0)
+    }
+
+    Fighter(Image image, Coordinates coordinates){
+        this.image = image
+        this.coordinates = coordinates
+    }
+
     public void draw(Graphics graphics) {
         coordinates.drawAtCoordinates(graphics, image)
-        //graphics.drawImage(image, 30, 90, null);
     }
 
 }

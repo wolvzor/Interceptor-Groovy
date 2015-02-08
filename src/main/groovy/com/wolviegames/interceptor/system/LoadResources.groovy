@@ -1,5 +1,7 @@
 package com.wolviegames.interceptor.system;
 
+import com.wolviegames.interceptor.game.Fighter;
+
 import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.io.File;
@@ -8,17 +10,20 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
-public class ImageResources {
+public class LoadResources {
 
     Map<String, Image> imageMap;
+    Map<String, Fighter> fighterMap;
     String basicPath = "fighter/small";
 
-    public ImageResources() {
+    public LoadResources() {
         imageMap = new HashMap<String, Image>();
+        fighterMap = new HashMap<String, Fighter>();
 
         // Load the Images
         try {
             URL directory;
+            Image image;
             Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(basicPath);
             while (imageEnumeration.hasMoreElements()) {
                 directory = imageEnumeration.nextElement();
@@ -27,8 +32,11 @@ public class ImageResources {
 
                 List<File> files= Arrays.asList(fileMetaInf.listFiles());
                 for(File file: files) {
-                    System.out.println(file.getPath());
-                    imageMap.put(file.getPath(), ImageIO.read(file));
+                    System.out.println(file.getName());
+                    image = ImageIO.read(file);
+                    imageMap.put(file.getName(), image);
+                    fighterMap.put(file.getName(), new Fighter(image));
+
                 }
             }
         } catch (IOException ie) {
@@ -40,9 +48,15 @@ public class ImageResources {
             System.out.println(use);
             System.exit(1);
         }
-
-
     }
 
+    public Fighter getFighter(String fighterName){
+        return fighterMap.get(fighterName);
+    }
 
+    public Fighter getFighter(String fighterName, Coordinates initialCoordinates){
+        Fighter fighter = fighterMap.get(fighterName);
+        fighter.setCoordinates(initialCoordinates);
+        return fighter
+    }
 }
