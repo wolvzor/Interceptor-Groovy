@@ -11,11 +11,6 @@ public class HexGrid {
     int scaledHeight
     int scaledWidth
 
-    HexGrid() {
-        hexTile = new HexTile()
-        changeScale(scale)
-    }
-
     HexGrid(double scale){
         hexTile = new HexTile()
         this.scale = scale
