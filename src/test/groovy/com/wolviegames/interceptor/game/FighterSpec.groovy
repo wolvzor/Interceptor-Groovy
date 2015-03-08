@@ -49,7 +49,7 @@ class FighterSpec extends Specification {
         setup:
         Image image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"))
         Coordinates mockCoordinates = Mock()
-        Fighter fighter = new Fighter(image, mockCoordinates)
+        Fighter fighter = new Fighter(image, mockCoordinates, Direction.WEST)
         Graphics mockGraphics = Mock()
         DrawingOffset offset = new DrawingOffset()
 
@@ -57,7 +57,7 @@ class FighterSpec extends Specification {
         fighter.draw(mockGraphics, 1.0, offset)
 
         then:
-        1 * mockCoordinates.drawAtCoordinates(mockGraphics,image, 1.0, offset)
+        1 * mockCoordinates.drawAtCoordinates(mockGraphics,image, 1.0, offset, Direction.WEST)
     }
 
 }

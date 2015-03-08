@@ -16,6 +16,12 @@ class Fighter {
     Coordinates coordinates
     Direction direction
 
+    Fighter(Coordinates coordinates){
+        image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"));
+        this.coordinates = coordinates
+        this.direction = Direction.WEST
+    }
+
     Fighter(Coordinates coordinates, Direction direction) {
         image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"));
         this.coordinates = coordinates
@@ -28,6 +34,12 @@ class Fighter {
         this.direction = Direction.WEST
     }
 
+    Fighter(Image image, Coordinates coordinates){
+        this.image = image
+        this.coordinates = coordinates
+        this.direction = Direction.WEST
+    }
+
     Fighter(Image image, Coordinates coordinates, Direction direction){
         this.image = image
         this.coordinates = coordinates
@@ -37,8 +49,6 @@ class Fighter {
     public void draw(Graphics graphics, double scale = 1.0, DrawingOffset drawingOffset) {
 
         coordinates.drawAtCoordinates(graphics, image, scale, drawingOffset, direction)
-
-        //direction.resetRotation(graphics, image, direction, coordinates)
     }
 
 }
