@@ -11,7 +11,9 @@ import javax.swing.*;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Dimension;
+import java.awt.Dimension
+import java.awt.event.KeyAdapter
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage
@@ -58,6 +60,22 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
         });
+
+        addKeyListener(new KeyAdapter() {
+
+            // TODO Do to whatever the active fighter is.
+            @Override
+            void keyPressed(KeyEvent keyEvent) {
+                int keyCode = keyEvent.getKeyCode()
+                if (keyCode == KeyEvent.VK_LEFT) {
+                    renegadeTeam.getFighters().get(0).turnLeft()
+                }
+                if (keyCode == KeyEvent.VK_RIGHT) {
+                    renegadeTeam.getFighters().get(0).turnRight()
+                }
+                super.keyPressed(keyEvent)
+            }
+        })
 
     }
 

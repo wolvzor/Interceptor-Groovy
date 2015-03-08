@@ -51,4 +51,13 @@ class Fighter {
         coordinates.drawAtCoordinates(graphics, image, scale, drawingOffset, direction)
     }
 
+    // TODO put this in a gameobject class
+    public void turnLeft() {
+        this.direction = direction.turnLeft()
+    }
+
+    public void turnRight() {
+        this.direction = direction.turnRight()
+    }
+
 }

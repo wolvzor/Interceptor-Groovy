@@ -11,11 +11,11 @@ public enum Direction {
     NORTHEAST(2),
     EAST(3),
     SOUTHEAST(4),
-    SOUTHWEST(5);
+    SOUTHWEST(5)
 
     private final Integer directionValue;
 
-    public Direction(Integer directionValue){
+    private Direction(Integer directionValue){
         this.directionValue = directionValue
     }
 
@@ -31,4 +31,15 @@ public enum Direction {
 
     }
 
+    public Direction turnLeft() {
+        System.out.println(this.directionValue)
+        return values()[ordinal() - 1];
+    }
+
+    public Direction turnRight() {
+        System.out.println(this.directionValue)
+        if (ordinal() == values().length - 1)
+            return values()[0]
+        return values()[ordinal() + 1];
+    }
 }
