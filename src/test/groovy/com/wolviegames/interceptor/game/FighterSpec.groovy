@@ -2,6 +2,7 @@ package com.wolviegames.interceptor.game
 
 import com.wolviegames.interceptor.display.DrawingOffset
 import com.wolviegames.interceptor.system.Coordinates
+import com.wolviegames.interceptor.system.Direction
 import spock.lang.Specification
 
 import javax.imageio.ImageIO
@@ -13,10 +14,11 @@ class FighterSpec extends Specification {
     def "Can create fighter with just coordinates which will create w/ a default image"() {
         when:
         Coordinates coordinates = new Coordinates(xCoord: 0, yCoord: 0)
-        Fighter fighter = new Fighter(coordinates)
+        Fighter fighter = new Fighter(coordinates, Direction.EAST)
 
         then:
         fighter.coordinates == coordinates
+        fighter.direction == Direction.EAST
         fighter.image != null
     }
 

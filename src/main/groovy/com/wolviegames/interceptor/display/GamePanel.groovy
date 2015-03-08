@@ -4,6 +4,7 @@ import com.wolviegames.interceptor.game.Faction
 import com.wolviegames.interceptor.game.Fighter
 import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.system.Coordinates
+import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
 
 import javax.swing.*;
@@ -42,13 +43,13 @@ public class GamePanel extends JPanel implements Runnable {
         teams = new ArrayList<Team>()
 
         Team togTeam = new Team("First Team", Faction.TOG)
-        togTeam.addFighter(resources.getFighter("Spiculum_small.gif", new Coordinates(xCoord:0, yCoord:0)));
-        togTeam.addFighter(resources.getFighter("Verutum_small.gif", new Coordinates(xCoord:2, yCoord:0)));
+        togTeam.addFighter(resources.getFighter("Spiculum_small.gif", new Coordinates(xCoord:0, yCoord:0), Direction.WEST));
+        togTeam.addFighter(resources.getFighter("Verutum_small.gif", new Coordinates(xCoord:2, yCoord:0), Direction.EAST));
         teams.add(togTeam)
 
         Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
-        renegadeTeam.addFighter(resources.getFighter("Peacekeeper_small.gif", new Coordinates(xCoord:2, yCoord:2)))
-        renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1)))
+        renegadeTeam.addFighter(resources.getFighter("Peacekeeper_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
+        renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1), Direction.SOUTHEAST))
         teams.add(renegadeTeam)
 
         addMouseListener(new MouseAdapter() {

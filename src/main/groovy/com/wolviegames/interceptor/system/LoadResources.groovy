@@ -52,9 +52,10 @@ public class LoadResources {
         return fighterMap.get(fighterName);
     }
 
-    public Fighter getFighter(String fighterName, Coordinates initialCoordinates){
+    public Fighter getFighter(String fighterName, Coordinates initialCoordinates, Direction direction){
         Fighter fighter = getFighter(fighterName);
         fighter.setCoordinates(initialCoordinates);
+        fighter.setDirection(direction)
         return fighter
     }
 }
