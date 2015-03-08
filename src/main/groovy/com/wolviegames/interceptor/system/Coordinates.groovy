@@ -16,10 +16,12 @@ class Coordinates {
     int offset
 
     void drawAtCoordinates(Graphics graphics, Image image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
-        offset = (yCoord == 0) ? 1 : yCoord % 2 -1
 
-        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + (Math.signum(xCoord) != -1? GlobalValues.HEX_WIDTH / 2 : GlobalValues.HEX_WIDTH) - image.getWidth()/2));
+        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - image.getWidth()/2));
         double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()) + GlobalValues.HEX_HEIGHT_OFFSET;
+
+        // Traveling up/down the y dimension will shift the x dimension accordingly.
+        xDimension -= (GlobalValues.HEX_WIDTH / 2) * yCoord
 
         // TODO: Oh dear gods, please clean this up.
         AffineTransform saveAT = ((Graphics2D)graphics).getTransform();
