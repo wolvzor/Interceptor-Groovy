@@ -31,4 +31,31 @@ class Coordinates {
                 (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
         ((Graphics2D)graphics).setTransform(saveAT)
     }
+
+    Coordinates moveForward(Direction direction){
+        switch(direction){
+            case Direction.WEST:
+                xCoord--
+                break
+            case Direction.NORTHWEST:
+                xCoord--
+                yCoord--
+                break
+            case Direction.NORTHEAST:
+                yCoord--
+                break
+            case Direction.EAST:
+                xCoord++
+                break
+            case Direction.SOUTHEAST:
+                xCoord++
+                yCoord++
+                break
+            case Direction.SOUTHWEST:
+                yCoord++
+                break
+        }
+
+        return this
+    }
 }

@@ -60,4 +60,8 @@ class Fighter {
         this.direction = direction.turnRight()
     }
 
+    public void moveForward() {
+        this.coordinates = coordinates.moveForward(direction)
+    }
+
 }

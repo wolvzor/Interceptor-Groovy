@@ -73,6 +73,9 @@ public class GamePanel extends JPanel implements Runnable {
                 if (keyCode == KeyEvent.VK_RIGHT) {
                     renegadeTeam.getFighters().get(0).turnRight()
                 }
+                if (keyCode == KeyEvent.VK_UP){
+                    renegadeTeam.getFighters().get(0).moveForward()
+                }
                 super.keyPressed(keyEvent)
             }
         })
