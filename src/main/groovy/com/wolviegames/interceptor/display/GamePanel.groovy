@@ -1,7 +1,9 @@
 package com.wolviegames.interceptor.display
 
+import com.wolviegames.interceptor.game.Asteroid
 import com.wolviegames.interceptor.game.Faction
 import com.wolviegames.interceptor.game.Fighter
+import com.wolviegames.interceptor.game.Missile
 import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.Direction
@@ -23,6 +25,8 @@ public class GamePanel extends JPanel implements Runnable {
     BufferedImage dbImage
     Graphics dbg
     List<Team> teams
+    List<Asteroid> asteroids
+    List<Missile> missiles
     int width;
     int height;
     double scale = 0.5;
@@ -54,6 +58,16 @@ public class GamePanel extends JPanel implements Runnable {
         renegadeTeam.addFighter(resources.getFighter("Petal_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
         renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1), Direction.SOUTHEAST))
         teams.add(renegadeTeam)
+
+        // Asteroids
+        asteroids = new ArrayList<Asteroid>()
+        asteroids.add(resources.getAsteroid("01.jpg", new Coordinates(xCoord:-1, yCoord:-2), Direction.SOUTHWEST))
+        asteroids.add(resources.getAsteroid("02.jpg", new Coordinates(xCoord: 3, yCoord:0), Direction.NORTHEAST))
+
+        // Missiles
+        missiles = new ArrayList<>()
+        missiles.add(resources.getMissile("sss.jpg", new Coordinates(xCoord:-1, yCoord: 0), Direction.WEST))
+        missiles.add(resources.getMissile("tgm.jpg", new Coordinates(xCoord:-2, yCoord: -1), Direction.EAST))
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
@@ -127,6 +141,15 @@ public class GamePanel extends JPanel implements Runnable {
                     fighter.draw(dbg, scale, drawingOffset)
                 }
             }
+
+            for(Asteroid asteroid: asteroids){
+                asteroid.draw(dbg, scale, drawingOffset)
+            }
+
+            for(Missile missile: missiles){
+                missile.draw(dbg, scale, drawingOffset)
+            }
+
 
         } catch(IOException e){
             System.out.println("Load image error.");

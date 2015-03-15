@@ -10,9 +10,9 @@ import java.awt.Image
 
 class GameObject {
 
-    Image image;
-    Coordinates coordinates
-    Direction direction
+    public Image image;
+    public Coordinates coordinates
+    public Direction direction
 
     GameObject(){
         image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"));
