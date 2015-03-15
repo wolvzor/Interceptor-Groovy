@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
         teams.add(togTeam)
 
         Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
-        renegadeTeam.addFighter(resources.getFighter("Peacekeeper_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
+        renegadeTeam.addFighter(resources.getFighter("Gladius_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
         renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1), Direction.SOUTHEAST))
         teams.add(renegadeTeam)
 

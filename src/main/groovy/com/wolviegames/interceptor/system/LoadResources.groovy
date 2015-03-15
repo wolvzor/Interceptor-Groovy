@@ -33,7 +33,7 @@ public class LoadResources {
                 for(File file: files) {
                     image = ImageIO.read(file);
                     imageMap.put(file.getName(), image);
-                    fighterMap.put(file.getName(), new Fighter(image));
+                      fighterMap.put(file.getName(), new Fighter(image));
 
                 }
             }
