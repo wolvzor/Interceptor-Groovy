@@ -6,6 +6,7 @@ import com.wolviegames.interceptor.game.Fighter
 import com.wolviegames.interceptor.game.Missile
 import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.system.Coordinates
+import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
 
@@ -27,6 +28,8 @@ public class GamePanel extends JPanel implements Runnable {
     List<Team> teams
     List<Asteroid> asteroids
     List<Missile> missiles
+
+    DiceRoller diceRoller
     int width;
     int height;
     double scale = 0.5;
@@ -44,6 +47,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         // Load resources
         resources = new LoadResources();
+
+        // Initialize dice roller
+        diceRoller = DiceRoller.instance
 
         // Create teams
         teams = new ArrayList<Team>()
