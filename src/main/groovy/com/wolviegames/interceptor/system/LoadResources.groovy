@@ -17,14 +17,26 @@ public class LoadResources {
     String fighterPath = "fighter/small";
 
     public LoadResources() {
+
+        initializeMaps()
+
+        loadResource(fighterPath, fighterMap)
+
+    }
+
+    protected void initializeMaps() {
+        fighterMap = new HashMap<String, Fighter>()
+
+    }
+
+    protected void loadResource(String resourcePath, Map<String, ?> resourceMap){
         imageMap = new HashMap<String, Image>();
-        fighterMap = new HashMap<String, Fighter>();
 
         // Load the Images
         try {
             URL directory;
             Image image;
-            Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(fighterPath);
+            Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(resourcePath);
             while (imageEnumeration.hasMoreElements()) {
                 directory = imageEnumeration.nextElement();
                 File fileMetaInf=new File(directory.toURI());
@@ -33,12 +45,12 @@ public class LoadResources {
                 for(File file: files) {
                     image = ImageIO.read(file);
                     imageMap.put(file.getName(), image);
-                      fighterMap.put(file.getName(), new Fighter(image));
+                    resourceMap.put(file.getName(), new Fighter(image));
 
                 }
             }
         } catch (IOException ie) {
-            System.out.println("Could not open in resources: " + fighterPath);
+            System.out.println("Could not open in resources: " + resourcePath);
             System.out.println(ie);
             System.exit(1);
         } catch (URISyntaxException use){
