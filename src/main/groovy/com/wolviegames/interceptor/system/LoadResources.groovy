@@ -14,7 +14,7 @@ public class LoadResources {
 
     Map<String, Image> imageMap;
     Map<String, Fighter> fighterMap;
-    String basicPath = "fighter/small";
+    String fighterPath = "fighter/small";
 
     public LoadResources() {
         imageMap = new HashMap<String, Image>();
@@ -24,7 +24,7 @@ public class LoadResources {
         try {
             URL directory;
             Image image;
-            Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(basicPath);
+            Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(fighterPath);
             while (imageEnumeration.hasMoreElements()) {
                 directory = imageEnumeration.nextElement();
                 File fileMetaInf=new File(directory.toURI());
@@ -38,7 +38,7 @@ public class LoadResources {
                 }
             }
         } catch (IOException ie) {
-            System.out.println("Could not open in resources: " + basicPath);
+            System.out.println("Could not open in resources: " + fighterPath);
             System.out.println(ie);
             System.exit(1);
         } catch (URISyntaxException use){

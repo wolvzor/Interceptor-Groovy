@@ -1,67 +1,17 @@
 package com.wolviegames.interceptor.game
 
-import com.wolviegames.interceptor.display.DrawingOffset
-import com.wolviegames.interceptor.system.Coordinates
-import com.wolviegames.interceptor.system.Direction
-
-import javax.imageio.ImageIO
-import java.awt.Graphics
-import java.awt.Graphics2D
 import java.awt.Image
-import java.awt.geom.AffineTransform
 
-class Fighter {
+class Fighter extends GameObject{
 
-    Image image;
-    Coordinates coordinates
-    Direction direction
+    // TODO Add fighter specific logic here.
 
-    Fighter(Coordinates coordinates){
-        image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"));
-        this.coordinates = coordinates
-        this.direction = Direction.WEST
-    }
-
-    Fighter(Coordinates coordinates, Direction direction) {
-        image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"));
-        this.coordinates = coordinates
-        this.direction = direction
+    Fighter() {
+        super()
     }
 
     Fighter(Image image){
-        this.image = image;
-        coordinates = new Coordinates(0,0,0)
-        this.direction = Direction.WEST
-    }
-
-    Fighter(Image image, Coordinates coordinates){
-        this.image = image
-        this.coordinates = coordinates
-        this.direction = Direction.WEST
-    }
-
-    Fighter(Image image, Coordinates coordinates, Direction direction){
-        this.image = image
-        this.coordinates = coordinates
-        this.direction = direction
-    }
-
-    public void draw(Graphics graphics, double scale = 1.0, DrawingOffset drawingOffset) {
-
-        coordinates.drawAtCoordinates(graphics, image, scale, drawingOffset, direction)
-    }
-
-    // TODO put this in a gameobject class
-    public void turnLeft() {
-        this.direction = direction.turnLeft()
-    }
-
-    public void turnRight() {
-        this.direction = direction.turnRight()
-    }
-
-    public void moveForward() {
-        this.coordinates = coordinates.moveForward(direction)
+        super(image)
     }
 
 }

@@ -20,8 +20,10 @@ class TeamSpec extends Specification{
     def "Team can add fighters to its team"() {
         setup:
         Team renegadeTeam = new Team("renegadeTeamName", Faction.RENEGADE)
-        Fighter fighterOne = new Fighter(new Coordinates(xCoord:0,yCoord:0))
-        Fighter fighterTwo = new Fighter(new Coordinates(xCoord:0,yCoord:1))
+        Fighter fighterOne = new Fighter()
+        fighterOne.coordinates = new Coordinates(xCoord:0,yCoord:0)
+        Fighter fighterTwo = new Fighter()
+        fighterTwo.coordinates = new Coordinates(xCoord:0,yCoord:1)
 
         when:
         renegadeTeam.addFighter(fighterOne)
