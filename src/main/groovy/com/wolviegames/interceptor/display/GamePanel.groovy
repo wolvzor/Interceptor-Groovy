@@ -67,13 +67,13 @@ public class GamePanel extends JPanel implements Runnable {
 
         // Asteroids
         asteroids = new ArrayList<Asteroid>()
-        asteroids.add(resources.getAsteroid("01.jpg", new Coordinates(xCoord:-1, yCoord:-2), Direction.SOUTHWEST))
-        asteroids.add(resources.getAsteroid("02.jpg", new Coordinates(xCoord: 3, yCoord:0), Direction.NORTHEAST))
+        asteroids.add(resources.getAsteroid("01.gif", new Coordinates(xCoord:-1, yCoord:-2), Direction.SOUTHWEST))
+        asteroids.add(resources.getAsteroid("02.gif", new Coordinates(xCoord: 3, yCoord:0), Direction.NORTHEAST))
 
         // Missiles
         missiles = new ArrayList<>()
-        missiles.add(resources.getMissile("sss.jpg", new Coordinates(xCoord:-1, yCoord: 0), Direction.WEST))
-        missiles.add(resources.getMissile("tgm.jpg", new Coordinates(xCoord:-2, yCoord: -1), Direction.EAST))
+        missiles.add(resources.getMissile("sss.gif", new Coordinates(xCoord:-1, yCoord: 0), Direction.WEST))
+        missiles.add(resources.getMissile("tgm.gif", new Coordinates(xCoord:-2, yCoord: -1), Direction.EAST))
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
