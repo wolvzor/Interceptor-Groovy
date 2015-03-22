@@ -38,6 +38,9 @@ public class GamePanel extends JPanel implements Runnable {
     LoadResources resources;
     DrawingOffset drawingOffset = new DrawingOffset(width_offset: 300, height_offset: 200)
 
+    int previousMousePositionX
+    int previousMousePositionY
+
     public GamePanel(long period, int width, int height) {
         this.width = width;
         this.height = height;
@@ -80,14 +83,22 @@ public class GamePanel extends JPanel implements Runnable {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
                 System.out.println("Mouse Pressed! " + event)
+                previousMousePositionX = event.getX()
+                previousMousePositionY = event.getY()
             }
 
         });
 
         // Apparently we need a different mouse listener purely for motion listeners...
         addMouseMotionListener(new MouseAdapter() {
+
+            // TODO Fix screen tearing :/
             public void mouseDragged(MouseEvent event){
                 System.out.println("Mouse dragged! " + event)
+                drawingOffset.height_offset += previousMousePositionY - event.getY()
+                drawingOffset.width_offset += previousMousePositionX - event.getX()
+                previousMousePositionY = event.getY()
+                previousMousePositionX = event.getX()
             }
         })
 
