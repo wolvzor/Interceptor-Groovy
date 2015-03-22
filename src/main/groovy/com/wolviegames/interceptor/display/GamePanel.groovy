@@ -9,6 +9,7 @@ import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
+import javafx.scene.input.MouseDragEvent
 
 import javax.swing.*;
 import java.awt.Toolkit;
@@ -18,7 +19,8 @@ import java.awt.Dimension
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.MouseEvent
+import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage
 
 public class GamePanel extends JPanel implements Runnable {
@@ -77,10 +79,24 @@ public class GamePanel extends JPanel implements Runnable {
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
-                // TODO mouse presses?
+                System.out.println("Mouse Pressed! " + event)
             }
 
         });
+
+        // Apparently we need a different mouse listener purely for motion listeners...
+        addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent event){
+                System.out.println("Mouse dragged! " + event)
+            }
+        })
+
+        // As well as for mouse wheel listeners. >.>
+        addMouseWheelListener(new MouseAdapter() {
+            public void mouseWheelMoved(MouseWheelEvent event) {
+                System.out.println("Mouse wheel moved! " + event)
+            }
+        })
 
         addKeyListener(new KeyAdapter() {
 
