@@ -3,10 +3,11 @@ package com.wolviegames.interceptor.display
 import javax.imageio.ImageIO
 import java.awt.Graphics
 import java.awt.Image
+import java.awt.image.BufferedImage
 
 class HexTile {
 
-    Image image;
+    BufferedImage image;
 
     HexTile() {
         image = ImageIO.read(getClass().getClassLoader().getResource("HexTile.png"));

@@ -4,6 +4,7 @@ import java.awt.Graphics
 import java.awt.Graphics2D
 import java.awt.Image
 import java.awt.geom.AffineTransform
+import java.awt.image.BufferedImage
 
 public enum Direction {
     WEST(0),
@@ -24,7 +25,7 @@ public enum Direction {
     }
 
     /* Ultimately, I don't want this to live here. I want this to live in a generic GameObject class. */
-    public void rotateImage(Graphics graphics, Image image, Direction direction, int xDimension, int yDimension){
+    public void rotateImage(Graphics graphics, BufferedImage image, Direction direction, int xDimension, int yDimension){
         Graphics2D graphics2d=(Graphics2D)graphics
 
         graphics2d.rotate(direction.directionValue * Math.PI / 3, xDimension, yDimension)

@@ -8,13 +8,14 @@ import spock.lang.Specification
 import javax.imageio.ImageIO
 import java.awt.Graphics
 import java.awt.Image
+import java.awt.image.BufferedImage
 
 class FighterSpec extends Specification {
 
 
     def "Can create fighter with just an image which will create a default coordinate position"() {
         when:
-        Image image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"))
+        BufferedImage image = ImageIO.read(getClass().getClassLoader().getResource("fighter/small/Cheetah_small.gif"))
         Fighter fighter = new Fighter(image)
 
         then:

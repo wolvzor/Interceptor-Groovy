@@ -6,11 +6,11 @@ import com.wolviegames.interceptor.system.Direction
 
 import javax.imageio.ImageIO
 import java.awt.Graphics
-import java.awt.Image
+import java.awt.image.BufferedImage
 
 class GameObject {
 
-    public Image image;
+    public BufferedImage image;
     public Coordinates coordinates
     public Direction direction
 
@@ -32,19 +32,19 @@ class GameObject {
         this.direction = direction
     }
 
-    GameObject(Image image){
+    GameObject(BufferedImage image){
         this.image = image;
         coordinates = new Coordinates(0,0,0)
         this.direction = Direction.WEST
     }
 
-    GameObject(Image image, Coordinates coordinates){
+    GameObject(BufferedImage image, Coordinates coordinates){
         this.image = image
         this.coordinates = coordinates
         this.direction = Direction.WEST
     }
 
-    GameObject(Image image, Coordinates coordinates, Direction direction){
+    GameObject(BufferedImage image, Coordinates coordinates, Direction direction){
         this.image = image
         this.coordinates = coordinates
         this.direction = direction

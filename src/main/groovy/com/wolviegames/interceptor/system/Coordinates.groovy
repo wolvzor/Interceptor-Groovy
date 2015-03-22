@@ -7,6 +7,7 @@ import java.awt.Graphics
 import java.awt.Graphics2D
 import java.awt.Image
 import java.awt.geom.AffineTransform
+import java.awt.image.BufferedImage
 
 @Canonical
 class Coordinates {
@@ -15,7 +16,7 @@ class Coordinates {
     int yCoord
     int offset
 
-    void drawAtCoordinates(Graphics graphics, Image image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
+    void drawAtCoordinates(Graphics graphics, BufferedImage image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
 
         double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - image.getWidth()/2));
         double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()) + GlobalValues.HEX_HEIGHT_OFFSET;

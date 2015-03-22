@@ -9,7 +9,6 @@ import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
-import javafx.scene.input.MouseDragEvent
 
 import javax.swing.*;
 import java.awt.Toolkit;

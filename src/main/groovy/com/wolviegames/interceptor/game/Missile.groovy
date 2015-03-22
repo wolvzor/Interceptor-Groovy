@@ -1,6 +1,6 @@
 package com.wolviegames.interceptor.game
 
-import java.awt.Image
+import java.awt.image.BufferedImage
 
 class Missile extends GameObject{
     // TODO Add fighter specific logic here.
@@ -9,7 +9,7 @@ class Missile extends GameObject{
         super()
     }
 
-    Missile(Image image){
+    Missile(BufferedImage image){
         super(image)
     }
 }

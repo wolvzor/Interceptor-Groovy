@@ -6,7 +6,8 @@ import com.wolviegames.interceptor.game.GameObject
 import com.wolviegames.interceptor.game.Missile;
 
 import javax.imageio.ImageIO;
-import java.awt.Image;
+import java.awt.Image
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -41,13 +42,13 @@ public class LoadResources {
     }
 
     protected void loadResource(String resourcePath, Map<String, ?> resourceMap, String className){
-        imageMap = new HashMap<String, Image>();
+        imageMap = new HashMap<String, BufferedImage>();
         def instance
 
         // Load the Images
         try {
             URL directory;
-            Image image;
+            BufferedImage image;
             Enumeration<URL> imageEnumeration = getClass().getClassLoader().getResources(resourcePath);
             while (imageEnumeration.hasMoreElements()) {
                 directory = imageEnumeration.nextElement();
