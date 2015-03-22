@@ -15,7 +15,7 @@ public class Interceptor{
 		int PHEIGHT=600
 
 		// Generate a gamepanel to start rendering
-		GamePanel gamePanel = new GamePanel(period,PWIDTH, PHEIGHT)
+		GamePanel gamePanel = new GamePanel(PWIDTH, PHEIGHT)
 
 		JFrame jFrame = new JFrame("Interceptor Demo");
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

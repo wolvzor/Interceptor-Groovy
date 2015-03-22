@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     int previousMousePositionX
     int previousMousePositionY
 
-    public GamePanel(long period, int width, int height) {
+    public GamePanel(int width, int height) {
         this.width = width;
         this.height = height;
         setBackground(Color.white);
