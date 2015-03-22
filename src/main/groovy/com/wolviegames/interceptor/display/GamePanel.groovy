@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     double scale = 0.5;
     LoadResources resources;
     DrawingOffset drawingOffset = new DrawingOffset(width_offset: 300, height_offset: 200)
+    GameCanvas gameCanvas
 
     int previousMousePositionX
     int previousMousePositionY
@@ -48,6 +49,9 @@ public class GamePanel extends JPanel implements Runnable {
         setFocusable(true);
         requestFocus();
         readyForTermination();
+
+        // Initiate canvas
+        gameCanvas = new GameCanvas(width, height)
 
         // Load resources
         resources = new LoadResources();
@@ -152,41 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
             } else dbg = dbImage.getGraphics();
         }
 
-
-        // Clear the background
-        dbg.setColor(Color.white);
-        dbg.fillRect(0, 0, width, height);
-
-        dbg.setColor(Color.blue);
-        dbg.setFont(getFont());
-
-        dbg.drawString("Interceptor!", 20, 25);
-        dbg.setColor(Color.black);
-
-        HexGrid hexGrid = new HexGrid(scale)
-
-        try {
-            hexGrid.draw(dbg, width, height, drawingOffset)
-            // TODO make this go through a loop of applicable game objects
-            for(Team team: teams){
-                for(Fighter fighter: team.getFighters()){
-                    fighter.draw(dbg, scale, drawingOffset)
-                }
-            }
-
-            for(Asteroid asteroid: asteroids){
-                asteroid.draw(dbg, scale, drawingOffset)
-            }
-
-            for(Missile missile: missiles){
-                missile.draw(dbg, scale, drawingOffset)
-            }
-
-
-        } catch(IOException e){
-            System.out.println("Load image error.");
-            System.exit(1);
-        }
+        gameCanvas.paint(dbg, scale, drawingOffset,teams, asteroids,missiles)
 
     }
 
