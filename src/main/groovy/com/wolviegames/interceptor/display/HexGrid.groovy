@@ -25,14 +25,14 @@ public class HexGrid {
 
     public void draw(Graphics graphics, int screenWidth, int screenHeight, DrawingOffset drawingOffset){
         // Calculate where the first grid should really be drawn.
-        double modulo_height = drawingOffset.height_offset % GlobalValues.HEX_HEIGHT
-        double modulo_width = drawingOffset.width_offset % GlobalValues.HEX_WIDTH
-        int height = 0 - (modulo_height* GlobalValues.HEX_HEIGHT)
+        double modulo_height = drawingOffset.height_offset % scaledHeight
+        double modulo_width = drawingOffset.width_offset % scaledWidth
+        int height = 0 - (modulo_height* scaledHeight)
 
 
         int width
         while(height < screenHeight) {
-            width = 0 - (modulo_width * GlobalValues.HEX_WIDTH)
+            width = 0 - (modulo_width * scaledWidth)
             while(width < screenWidth) {
                 hexTile.draw(graphics, width, height, scale, drawingOffset)
                 width += scaledWidth

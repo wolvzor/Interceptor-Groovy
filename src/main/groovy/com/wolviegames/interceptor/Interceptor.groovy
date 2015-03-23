@@ -22,6 +22,7 @@ public class Interceptor{
 		jFrame.setSize(PWIDTH,PHEIGHT);
 		jFrame.add(gamePanel)
 		jFrame.setVisible(true);
+		jFrame.createBufferStrategy(2)
 
 		gamePanel.run()
 		

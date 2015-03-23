@@ -8,7 +8,8 @@ import com.wolviegames.interceptor.game.Team
 import java.awt.Canvas
 import java.awt.Color
 import java.awt.Graphics
-import java.awt.image.BufferedImage
+import java.awt.Toolkit
+import java.awt.image.BufferStrategy
 
 
 class GameCanvas extends Canvas{
@@ -16,6 +17,7 @@ class GameCanvas extends Canvas{
     public GameCanvas(int width, int height){
         setBackground(Color.BLACK)
         setSize(width, height)
+
     }
 
     public void paint(Graphics graphics, double scale, DrawingOffset drawingOffset, List<Team> teams, List<Asteroid> asteroids, List<Missile> missiles){

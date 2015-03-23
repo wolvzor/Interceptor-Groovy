@@ -44,6 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel(int width, int height) {
         this.width = width;
         this.height = height;
+        this.setDoubleBuffered(true)
         setBackground(Color.white);
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
@@ -85,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
-                System.out.println("Mouse Pressed! " + event)
+                //System.out.println("Mouse Pressed! " + event)
                 previousMousePositionX = event.getX()
                 previousMousePositionY = event.getY()
             }
@@ -97,9 +98,9 @@ public class GamePanel extends JPanel implements Runnable {
 
             // TODO Fix screen tearing :/
             public void mouseDragged(MouseEvent event){
-                System.out.println("Mouse dragged! " + event)
-                drawingOffset.height_offset += previousMousePositionY - event.getY()
-                drawingOffset.width_offset += previousMousePositionX - event.getX()
+                //System.out.println("Mouse dragged! " + event)
+                drawingOffset.height_offset -= previousMousePositionY - event.getY()
+                drawingOffset.width_offset -= previousMousePositionX - event.getX()
                 previousMousePositionY = event.getY()
                 previousMousePositionX = event.getX()
             }
@@ -108,7 +109,10 @@ public class GamePanel extends JPanel implements Runnable {
         // As well as for mouse wheel listeners. >.>
         addMouseWheelListener(new MouseAdapter() {
             public void mouseWheelMoved(MouseWheelEvent event) {
+                scale -= (event.getWheelRotation()/25)
+                if (scale < 0.1) scale = 0.1
                 System.out.println("Mouse wheel moved! " + event)
+                System.out.println(scale)
             }
         })
 
