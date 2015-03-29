@@ -1,6 +1,10 @@
 package com.wolviegames.interceptor.display
 
-import com.wolviegames.interceptor.game.*
+import com.wolviegames.interceptor.game.Faction
+import com.wolviegames.interceptor.game.Team
+import com.wolviegames.interceptor.game.gameobject.Asteroid
+import com.wolviegames.interceptor.game.gameobject.Missile
+import com.wolviegames.interceptor.game.tracker.InitiativeTracker
 import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction

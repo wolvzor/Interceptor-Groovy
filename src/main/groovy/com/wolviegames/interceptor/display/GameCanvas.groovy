@@ -1,16 +1,12 @@
 package com.wolviegames.interceptor.display
 
-import com.wolviegames.interceptor.game.Asteroid
-import com.wolviegames.interceptor.game.Fighter
-import com.wolviegames.interceptor.game.Missile
 import com.wolviegames.interceptor.game.Team
+import com.wolviegames.interceptor.game.gameobject.Asteroid
+import com.wolviegames.interceptor.game.gameobject.Fighter
+import com.wolviegames.interceptor.game.gameobject.Missile
 
-import java.awt.Canvas
-import java.awt.Color
-import java.awt.Graphics
-import java.awt.Toolkit
-import java.awt.image.BufferStrategy
-
+import java.awt.*
+import java.util.List
 
 class GameCanvas extends Canvas{
 

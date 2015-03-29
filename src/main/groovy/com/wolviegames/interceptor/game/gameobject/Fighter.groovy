@@ -1,6 +1,5 @@
-package com.wolviegames.interceptor.game
+package com.wolviegames.interceptor.game.gameobject
 
-import java.awt.Image
 import java.awt.image.BufferedImage
 
 class Fighter extends GameObject{

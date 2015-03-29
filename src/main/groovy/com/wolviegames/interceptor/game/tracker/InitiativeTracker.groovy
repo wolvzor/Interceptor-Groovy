@@ -1,5 +1,6 @@
-package com.wolviegames.interceptor.game
+package com.wolviegames.interceptor.game.tracker
 
+import com.wolviegames.interceptor.game.Faction
 import com.wolviegames.interceptor.system.DiceRoller
 
 

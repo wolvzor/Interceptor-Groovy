@@ -1,4 +1,4 @@
-package com.wolviegames.interceptor.game
+package com.wolviegames.interceptor.game.gameobject
 
 import java.awt.image.BufferedImage
 

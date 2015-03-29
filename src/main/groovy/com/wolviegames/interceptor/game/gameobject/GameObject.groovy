@@ -1,11 +1,11 @@
-package com.wolviegames.interceptor.game
+package com.wolviegames.interceptor.game.gameobject
 
 import com.wolviegames.interceptor.display.DrawingOffset
 import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.Direction
 
 import javax.imageio.ImageIO
-import java.awt.Graphics
+import java.awt.*
 import java.awt.image.BufferedImage
 
 class GameObject {

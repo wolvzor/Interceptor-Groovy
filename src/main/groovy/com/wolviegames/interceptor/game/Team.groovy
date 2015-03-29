@@ -1,9 +1,6 @@
 package com.wolviegames.interceptor.game;
 
-import com.wolviegames.interceptor.game.Fighter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.wolviegames.interceptor.game.gameobject.Fighter
 
 public class Team {
 

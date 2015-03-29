@@ -1,5 +1,6 @@
 package com.wolviegames.interceptor.game
 
+import com.wolviegames.interceptor.game.gameobject.Fighter
 import com.wolviegames.interceptor.system.Coordinates
 import spock.lang.Specification
 

@@ -13,4 +13,8 @@ public enum Faction {
     public Integer factionValue() {
         return factionValue;
     }
+
+    public Faction nextFaction(){
+        return this.equals(RENEGADE) ? TOG : RENEGADE
+    }
 }

@@ -1,18 +1,13 @@
 package com.wolviegames.interceptor.system
 
-import com.wolviegames.interceptor.game.Asteroid;
-import com.wolviegames.interceptor.game.Fighter
-import com.wolviegames.interceptor.game.GameObject
-import com.wolviegames.interceptor.game.Missile;
+import com.wolviegames.interceptor.game.gameobject.Asteroid
+import com.wolviegames.interceptor.game.gameobject.Fighter
+import com.wolviegames.interceptor.game.gameobject.Missile
 
-import javax.imageio.ImageIO;
-import java.awt.Image
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.*;
+import javax.imageio.ImageIO
+import java.awt.*
+import java.awt.image.BufferedImage
+import java.util.List;
 
 public class LoadResources {
 
@@ -29,9 +24,9 @@ public class LoadResources {
 
         initializeMaps()
 
-        loadResource(fighterPath, fighterMap, "com.wolviegames.interceptor.game.Fighter")
-        loadResource(asteroidPath, asteroidMap, "com.wolviegames.interceptor.game.Asteroid")
-        loadResource(missilePath, missileMap, "com.wolviegames.interceptor.game.Missile")
+        loadResource(fighterPath, fighterMap, "com.wolviegames.interceptor.game.gameobject.Fighter")
+        loadResource(asteroidPath, asteroidMap, "com.wolviegames.interceptor.game.gameobject.Asteroid")
+        loadResource(missilePath, missileMap, "com.wolviegames.interceptor.game.gameobject.Missile")
 
     }
 
