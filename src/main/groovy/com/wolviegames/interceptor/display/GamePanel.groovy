@@ -2,7 +2,6 @@ package com.wolviegames.interceptor.display
 
 import com.wolviegames.interceptor.game.Asteroid
 import com.wolviegames.interceptor.game.Faction
-import com.wolviegames.interceptor.game.Fighter
 import com.wolviegames.interceptor.game.Missile
 import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.system.Coordinates
@@ -10,17 +9,11 @@ import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
 
-import javax.swing.*;
-import java.awt.Toolkit;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Dimension
-import java.awt.event.KeyAdapter
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent
-import java.awt.event.MouseWheelEvent;
+import javax.swing.*
+import java.awt.*
+import java.awt.event.*
 import java.awt.image.BufferedImage
+import java.util.List
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -61,28 +54,11 @@ public class GamePanel extends JPanel implements Runnable {
         diceRoller = DiceRoller.instance
 
         // Create teams
-        teams = new ArrayList<Team>()
+        teams = createTeams()
 
-        // TODO Demo code - will replace with actual team creation code later.
-        Team togTeam = new Team("First Team", Faction.TOG)
-        togTeam.addFighter(resources.getFighter("Spiculum_small.gif", new Coordinates(xCoord:0, yCoord:0), Direction.WEST));
-        togTeam.addFighter(resources.getFighter("Verutum_small.gif", new Coordinates(xCoord:2, yCoord:0), Direction.EAST));
-        teams.add(togTeam)
+        // Determine Initiative
+        Faction factionInitiative = rollInitiative()
 
-        Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
-        renegadeTeam.addFighter(resources.getFighter("Petal_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
-        renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1), Direction.SOUTHEAST))
-        teams.add(renegadeTeam)
-
-        // Asteroids
-        asteroids = new ArrayList<Asteroid>()
-        asteroids.add(resources.getAsteroid("01.gif", new Coordinates(xCoord:-1, yCoord:-2), Direction.SOUTHWEST))
-        asteroids.add(resources.getAsteroid("02.gif", new Coordinates(xCoord: 3, yCoord:0), Direction.NORTHEAST))
-
-        // Missiles
-        missiles = new ArrayList<>()
-        missiles.add(resources.getMissile("sss.gif", new Coordinates(xCoord:-1, yCoord: 0), Direction.WEST))
-        missiles.add(resources.getMissile("tgm.gif", new Coordinates(xCoord:-2, yCoord: -1), Direction.EAST))
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
@@ -123,13 +99,13 @@ public class GamePanel extends JPanel implements Runnable {
             void keyPressed(KeyEvent keyEvent) {
                 int keyCode = keyEvent.getKeyCode()
                 if (keyCode == KeyEvent.VK_LEFT) {
-                    renegadeTeam.getFighters().get(0).turnLeft()
+                    teams.get(factionInitiative.factionValue()).getFighters().get(0).turnLeft()
                 }
                 if (keyCode == KeyEvent.VK_RIGHT) {
-                    renegadeTeam.getFighters().get(0).turnRight()
+                    teams.get(factionInitiative.factionValue()).getFighters().get(0).turnRight()
                 }
                 if (keyCode == KeyEvent.VK_UP){
-                    renegadeTeam.getFighters().get(0).moveForward()
+                    teams.get(factionInitiative.factionValue()).getFighters().get(0).moveForward()
                 }
                 super.keyPressed(keyEvent)
             }
@@ -182,6 +158,35 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    protected ArrayList<Team> createTeams() {
+        teams = new ArrayList<Team>()
 
+        // TODO Demo code - will replace with actual team creation code later.
+        Team togTeam = new Team("First Team", Faction.TOG)
+        togTeam.addFighter(resources.getFighter("Spiculum_small.gif", new Coordinates(xCoord:0, yCoord:0), Direction.WEST));
+        togTeam.addFighter(resources.getFighter("Verutum_small.gif", new Coordinates(xCoord:2, yCoord:0), Direction.EAST));
+        teams.add(togTeam)
+
+        Team renegadeTeam = new Team("Second Team", Faction.RENEGADE)
+        renegadeTeam.addFighter(resources.getFighter("Petal_small.gif", new Coordinates(xCoord:2, yCoord:2), Direction.NORTHWEST))
+        renegadeTeam.addFighter(resources.getFighter("Guardian_small.gif", new Coordinates(xCoord:-1, yCoord:-1), Direction.SOUTHEAST))
+        teams.add(renegadeTeam)
+
+        // Asteroids
+        asteroids = new ArrayList<Asteroid>()
+        asteroids.add(resources.getAsteroid("01.gif", new Coordinates(xCoord:-1, yCoord:-2), Direction.SOUTHWEST))
+        asteroids.add(resources.getAsteroid("02.gif", new Coordinates(xCoord: 3, yCoord:0), Direction.NORTHEAST))
+
+        // Missiles
+        missiles = new ArrayList<>()
+        missiles.add(resources.getMissile("sss.gif", new Coordinates(xCoord:-1, yCoord: 0), Direction.WEST))
+        missiles.add(resources.getMissile("tgm.gif", new Coordinates(xCoord:-2, yCoord: -1), Direction.EAST))
+
+        return teams
+    }
+
+    protected Faction rollInitiative() {
+        return (diceRoller.roll() > diceRoller.roll()) ?  Faction.RENEGADE :  Faction.TOG
+    }
 
 }
