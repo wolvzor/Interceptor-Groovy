@@ -1,9 +1,6 @@
 package com.wolviegames.interceptor.display
 
-import com.wolviegames.interceptor.game.Asteroid
-import com.wolviegames.interceptor.game.Faction
-import com.wolviegames.interceptor.game.Missile
-import com.wolviegames.interceptor.game.Team
+import com.wolviegames.interceptor.game.*
 import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
@@ -34,6 +31,9 @@ public class GamePanel extends JPanel implements Runnable {
     int previousMousePositionX
     int previousMousePositionY
 
+    // Game phase trackers
+    InitiativeTracker initiativeTracker
+
     public GamePanel(int width, int height) {
         this.width = width;
         this.height = height;
@@ -53,11 +53,14 @@ public class GamePanel extends JPanel implements Runnable {
         // Initialize dice roller
         diceRoller = DiceRoller.instance
 
+        // Initialize initiative tracker
+        initiativeTracker = new InitiativeTracker()
+
         // Create teams
         teams = createTeams()
 
         // Determine Initiative
-        Faction factionInitiative = rollInitiative()
+        Faction factionInitiative = initiativeTracker.rollInitiative()
 
 
         addMouseListener(new MouseAdapter() {
@@ -185,8 +188,6 @@ public class GamePanel extends JPanel implements Runnable {
         return teams
     }
 
-    protected Faction rollInitiative() {
-        return (diceRoller.roll() > diceRoller.roll()) ?  Faction.RENEGADE :  Faction.TOG
-    }
+
 
 }
