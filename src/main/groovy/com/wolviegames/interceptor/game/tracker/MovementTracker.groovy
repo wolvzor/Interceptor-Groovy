@@ -20,12 +20,29 @@ class MovementTracker {
 
     public startNewMovementPhase(List<Team> teams, Faction startingFaction) {
         this.teams = teams.clone()
+        for(Team team: teams){
+            for(Fighter fighter: team.getFighters()){
+                fighter.setHasMoved(false)
+            }
+        }
         currentFaction = startingFaction
         currentFighterTracker = 0
     }
 
     public Fighter currentFighter() {
         return teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker)
+    }
+
+    public Boolean allFightersHaveMoved() {
+        // Check if the current team is out of fighters
+        if (teams.get(currentFaction.factionValue()).getFighters().size() <= currentFighterTracker){
+            Faction nextFaction = currentFaction.nextFaction()
+            // Check if all the current teams are out of fighters
+            if (teams.get(nextFaction.factionValue()).getFighters().size() <= currentFighterTracker){
+                return true
+            }
+        }
+        return false
     }
 
     public Fighter nextFighter() {
@@ -41,10 +58,10 @@ class MovementTracker {
         }
 
         // Check if the current team is out of fighters
-        if (teams.get(currentFaction.factionValue()).getFighters().size() < currentFighterTracker){
+        if (teams.get(currentFaction.factionValue()).getFighters().size() <= currentFighterTracker){
             currentFaction = currentFaction.nextFaction()
             // Check if all the current teams are out of fighters
-            if (teams.get(currentFaction.factionValue()).getFighters().size() < currentFighterTracker){
+            if (teams.get(currentFaction.factionValue()).getFighters().size() <= currentFighterTracker){
                 return null
             }
         }

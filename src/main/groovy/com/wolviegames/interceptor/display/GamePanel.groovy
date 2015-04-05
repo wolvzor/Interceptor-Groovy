@@ -112,18 +112,21 @@ public class GamePanel extends JPanel implements Runnable {
                 int keyCode = keyEvent.getKeyCode()
                 if (keyCode == KeyEvent.VK_LEFT) {
                     movementTracker.currentFighter().turnLeft()
-                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).turnLeft()
                 }
                 if (keyCode == KeyEvent.VK_RIGHT) {
                     movementTracker.currentFighter().turnRight()
-                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).turnRight()
                 }
                 if (keyCode == KeyEvent.VK_UP){
                     movementTracker.currentFighter().moveForward()
-                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).moveForward()
                 }
                 if (keyCode == KeyEvent.VK_SPACE){
                     movementTracker.nextFighter()
+                }
+                // Continue to do movement loop for now
+                // TODO Replace this with proper initiative/movement phase later
+                if (movementTracker.allFightersHaveMoved()){
+                    factionInitiative = initiativeTracker.switchInitiative()
+                    movementTracker.startNewMovementPhase(teams, factionInitiative)
                 }
                 super.keyPressed(keyEvent)
             }
