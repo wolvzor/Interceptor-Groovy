@@ -56,7 +56,6 @@ public class LoadResources {
                     instance = getClass().forName(className)?.newInstance()
                     instance.image = image
                     resourceMap.put(file.getName(), instance);
-
                 }
             }
         } catch (IOException ie) {

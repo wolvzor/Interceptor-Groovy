@@ -21,11 +21,8 @@ class Coordinates {
         int middleOfImageWidth = image.getWidth()/2
 
         // Translate coordinates with absolute position
-        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - middleOfImageWidth)) + GlobalValues.HEX_WIDTH_OFFSET*scale;
-        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT * 2/3) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET*scale);
-
-        // Scale coordinates
-
+        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - middleOfImageWidth)) + GlobalValues.HEX_WIDTH_OFFSET;
+        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT * 2 / 3) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET);
 
 
 
@@ -35,8 +32,8 @@ class Coordinates {
 
         // TODO: Oh dear gods, please clean this up.
         AffineTransform saveAT = ((Graphics2D)graphics).getTransform();
-        direction.rotateImage(graphics, image, direction, (xDimension * scale).intValue() + drawingOffset.width_offset + (image.getWidth()*scale/2).intValue(),
-                (yDimension * scale).intValue() + drawingOffset.height_offset + (image.getHeight()* scale /2).intValue())
+        direction.rotateImage(graphics, image, direction, (xDimension * scale).intValue() + drawingOffset.width_offset + (middleOfImageWidth * scale).intValue(),
+                (yDimension * scale).intValue() + drawingOffset.height_offset + (middleOfImageHeight * scale).intValue())
         graphics.drawImage(image, (xDimension * scale).intValue() + drawingOffset.width_offset, (yDimension * scale).intValue() + drawingOffset.height_offset,
                 (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
         ((Graphics2D)graphics).setTransform(saveAT)
