@@ -5,6 +5,7 @@ import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.game.gameobject.Asteroid
 import com.wolviegames.interceptor.game.gameobject.Missile
 import com.wolviegames.interceptor.game.tracker.InitiativeTracker
+import com.wolviegames.interceptor.game.tracker.MovementTracker
 import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
@@ -37,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Game phase trackers
     InitiativeTracker initiativeTracker
+    MovementTracker movementTracker
 
     public GamePanel(int width, int height) {
         this.width = width;
@@ -65,6 +67,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         // Determine Initiative
         Faction factionInitiative = initiativeTracker.rollInitiative()
+
+        // Initialize movement tracker
+        movementTracker = new MovementTracker(teams, factionInitiative)
 
 
         addMouseListener(new MouseAdapter() {
@@ -106,13 +111,19 @@ public class GamePanel extends JPanel implements Runnable {
             void keyPressed(KeyEvent keyEvent) {
                 int keyCode = keyEvent.getKeyCode()
                 if (keyCode == KeyEvent.VK_LEFT) {
-                    teams.get(factionInitiative.factionValue()).getFighters().get(0).turnLeft()
+                    movementTracker.currentFighter().turnLeft()
+                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).turnLeft()
                 }
                 if (keyCode == KeyEvent.VK_RIGHT) {
-                    teams.get(factionInitiative.factionValue()).getFighters().get(0).turnRight()
+                    movementTracker.currentFighter().turnRight()
+                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).turnRight()
                 }
                 if (keyCode == KeyEvent.VK_UP){
-                    teams.get(factionInitiative.factionValue()).getFighters().get(0).moveForward()
+                    movementTracker.currentFighter().moveForward()
+                    //teams.get(factionInitiative.factionValue()).getFighters().get(0).moveForward()
+                }
+                if (keyCode == KeyEvent.VK_SPACE){
+                    movementTracker.nextFighter()
                 }
                 super.keyPressed(keyEvent)
             }

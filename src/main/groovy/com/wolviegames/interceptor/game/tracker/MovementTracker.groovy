@@ -25,27 +25,31 @@ class MovementTracker {
     }
 
     public Fighter currentFighter() {
-        return teams.get(currentFaction).fighters.get(currentFighterTracker)
+        return teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker)
     }
 
     public Fighter nextFighter() {
+        // Update that the fighter has moved
+        teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker).hasMoved = Boolean.TRUE
+
+        // Change the faction
         currentFaction = currentFaction.nextFaction()
 
         // Check if the fighter has already moved
-        if (teams.get(currentFaction).getFighters().get(currentFighterTracker).hasMoved()){
+        if (teams.get(currentFaction.factionValue()).getFighters().get(currentFighterTracker).getHasMoved()){
             currentFighterTracker++
         }
 
         // Check if the current team is out of fighters
-        if (teams.get(currentFaction).getFighters().size() < currentFighterTracker){
+        if (teams.get(currentFaction.factionValue()).getFighters().size() < currentFighterTracker){
             currentFaction = currentFaction.nextFaction()
             // Check if all the current teams are out of fighters
-            if (teams.get(currentFaction).getFighters().size() < currentFighterTracker){
+            if (teams.get(currentFaction.factionValue()).getFighters().size() < currentFighterTracker){
                 return null
             }
         }
 
-        return teams.get(currentFaction).getFighters().get(currentFighterTracker)
+        return teams.get(currentFaction.factionValue()).getFighters().get(currentFighterTracker)
     }
 
 }
