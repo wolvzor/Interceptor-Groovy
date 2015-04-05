@@ -16,8 +16,19 @@ class Coordinates {
 
     void drawAtCoordinates(Graphics graphics, BufferedImage image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
 
-        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - image.getWidth()/2)) + GlobalValues.HEX_WIDTH_OFFSET*scale;
-        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET*scale);
+        // Determine center of X dimension and Y dimension of object
+        int middleOfImageHeight = image.getHeight()/2
+        int middleOfImageWidth = image.getWidth()/2
+
+        // Translate coordinates with absolute position
+        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - middleOfImageWidth)) + GlobalValues.HEX_WIDTH_OFFSET*scale;
+        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT * 2/3) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET*scale);
+
+        // Scale coordinates
+
+
+
+
 
         // Traveling up/down the y dimension will shift the x dimension accordingly.
         xDimension -= (GlobalValues.HEX_WIDTH / 2) * yCoord
