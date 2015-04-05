@@ -16,7 +16,7 @@ class MovementHex {
     MovementHex() {
         image = ImageIO.read(getClass().getClassLoader().getResource("MovementHex.gif"));
         direction = Direction.EAST
-        coordinates = new Coordinates(xCoord:-1, yCoord: 0)
+        coordinates = new Coordinates(xCoord:2, yCoord: 2)
     }
 
     public void draw(Graphics graphics, double scale = 1.0, DrawingOffset drawingOffset) {

@@ -87,7 +87,7 @@ class MovementTracker {
     }
 
     public void resetMovementHex() {
-        //movementHex.coordinates = teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker).coordinates
+        movementHex.coordinates = teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker).coordinates
     }
 
 }
