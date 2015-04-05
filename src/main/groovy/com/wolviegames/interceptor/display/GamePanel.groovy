@@ -105,8 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         })
 
         addKeyListener(new KeyAdapter() {
-
-            // TODO Do to whatever the active fighter is.
+            
             @Override
             void keyPressed(KeyEvent keyEvent) {
                 int keyCode = keyEvent.getKeyCode()
