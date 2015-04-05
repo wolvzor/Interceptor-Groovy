@@ -16,7 +16,8 @@ class GameCanvas extends Canvas{
 
     }
 
-    public void paint(Graphics graphics, double scale, DrawingOffset drawingOffset, List<Team> teams, List<Asteroid> asteroids, List<Missile> missiles){
+    public void paint(Graphics graphics, double scale, DrawingOffset drawingOffset, List<Team> teams,
+                      List<Asteroid> asteroids, List<Missile> missiles, MovementHex movementHex){
 
         // Clear the background
         HexGrid hexGrid = new HexGrid(scale)
@@ -38,6 +39,7 @@ class GameCanvas extends Canvas{
                 missile.draw(graphics, scale, drawingOffset)
             }
 
+            movementHex.draw(graphics, scale, drawingOffset)
 
         } catch(IOException e){
             System.out.println("Load image error.");

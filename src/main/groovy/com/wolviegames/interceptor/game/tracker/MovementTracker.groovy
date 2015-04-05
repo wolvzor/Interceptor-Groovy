@@ -1,5 +1,6 @@
 package com.wolviegames.interceptor.game.tracker
 
+import com.wolviegames.interceptor.display.MovementHex
 import com.wolviegames.interceptor.game.Faction
 import com.wolviegames.interceptor.game.Team
 import com.wolviegames.interceptor.game.gameobject.Asteroid
@@ -12,13 +13,17 @@ class MovementTracker {
     List<Asteroid> asteroids
     Faction currentFaction
     int currentFighterTracker
+    MovementHex movementHex
 
 
     MovementTracker(List<Team> teams, List<Asteroid> asteroids, Faction startingFaction){
         this.teams = teams.clone()
         this.asteroids = asteroids.clone()
+
         currentFaction = startingFaction
         currentFighterTracker = 0
+        movementHex = new MovementHex()
+        resetMovementHex()
     }
 
     public startNewMovementPhase(List<Team> teams, Faction startingFaction) {
@@ -30,6 +35,7 @@ class MovementTracker {
         }
         currentFaction = startingFaction
         currentFighterTracker = 0
+        resetMovementHex()
     }
 
     public Fighter currentFighter() {
@@ -69,6 +75,8 @@ class MovementTracker {
             }
         }
 
+        resetMovementHex()
+
         return teams.get(currentFaction.factionValue()).getFighters().get(currentFighterTracker)
     }
 
@@ -76,6 +84,10 @@ class MovementTracker {
         for(Asteroid asteroid: asteroids){
             asteroid.moveForward()
         }
+    }
+
+    public void resetMovementHex() {
+        //movementHex.coordinates = teams.get(currentFaction.factionValue()).fighters.get(currentFighterTracker).coordinates
     }
 
 }

@@ -3,9 +3,7 @@ package com.wolviegames.interceptor.system
 import com.wolviegames.interceptor.display.DrawingOffset
 import groovy.transform.Canonical
 
-import java.awt.Graphics
-import java.awt.Graphics2D
-import java.awt.Image
+import java.awt.*
 import java.awt.geom.AffineTransform
 import java.awt.image.BufferedImage
 
@@ -18,7 +16,7 @@ class Coordinates {
 
     void drawAtCoordinates(Graphics graphics, BufferedImage image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
 
-        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - image.getWidth()/2));
+        double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - image.getWidth()/2)) + GlobalValues.HEX_WIDTH_OFFSET*scale;
         double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT/2) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET*scale);
 
         // Traveling up/down the y dimension will shift the x dimension accordingly.

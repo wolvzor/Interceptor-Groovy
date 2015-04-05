@@ -157,7 +157,7 @@ public class GamePanel extends JPanel implements Runnable {
             } else dbg = dbImage.getGraphics();
         }
 
-        gameCanvas.paint(dbg, scale, drawingOffset,teams, asteroids,missiles)
+        gameCanvas.paint(dbg, scale, drawingOffset,teams, asteroids,missiles, movementTracker.movementHex)
 
     }
 

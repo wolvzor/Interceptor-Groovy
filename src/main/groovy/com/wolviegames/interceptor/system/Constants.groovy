@@ -10,4 +10,5 @@ class GlobalValues {
 
     // TODO Fix the hex drawing code for this stupid offset.
     static int HEX_HEIGHT_OFFSET = 15
+    static int HEX_WIDTH_OFFSET = 7
 }
