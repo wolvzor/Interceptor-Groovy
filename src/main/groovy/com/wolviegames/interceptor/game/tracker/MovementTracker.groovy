@@ -2,18 +2,21 @@ package com.wolviegames.interceptor.game.tracker
 
 import com.wolviegames.interceptor.game.Faction
 import com.wolviegames.interceptor.game.Team
+import com.wolviegames.interceptor.game.gameobject.Asteroid
 import com.wolviegames.interceptor.game.gameobject.Fighter
 
 
 class MovementTracker {
 
     List<Team> teams
+    List<Asteroid> asteroids
     Faction currentFaction
     int currentFighterTracker
 
 
-    MovementTracker(List<Team> teams, Faction startingFaction){
+    MovementTracker(List<Team> teams, List<Asteroid> asteroids, Faction startingFaction){
         this.teams = teams.clone()
+        this.asteroids = asteroids.clone()
         currentFaction = startingFaction
         currentFighterTracker = 0
     }
@@ -67,6 +70,12 @@ class MovementTracker {
         }
 
         return teams.get(currentFaction.factionValue()).getFighters().get(currentFighterTracker)
+    }
+
+    public void moveAsteroids() {
+        for(Asteroid asteroid: asteroids){
+            asteroid.moveForward()
+        }
     }
 
 }

@@ -69,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
         Faction factionInitiative = initiativeTracker.rollInitiative()
 
         // Initialize movement tracker
-        movementTracker = new MovementTracker(teams, factionInitiative)
+        movementTracker = new MovementTracker(teams, asteroids, factionInitiative)
 
 
         addMouseListener(new MouseAdapter() {
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         })
 
         addKeyListener(new KeyAdapter() {
-            
+
             @Override
             void keyPressed(KeyEvent keyEvent) {
                 int keyCode = keyEvent.getKeyCode()
@@ -124,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable {
                 // Continue to do movement loop for now
                 // TODO Replace this with proper initiative/movement phase later
                 if (movementTracker.allFightersHaveMoved()){
+                    movementTracker.moveAsteroids()
                     factionInitiative = initiativeTracker.switchInitiative()
                     movementTracker.startNewMovementPhase(teams, factionInitiative)
                 }

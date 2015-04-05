@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage
 
 class GameObject {
 
-    public BufferedImage image;
+    public BufferedImage image
     public Coordinates coordinates
     public Direction direction
 
@@ -55,7 +55,6 @@ class GameObject {
         coordinates.drawAtCoordinates(graphics, image, scale, drawingOffset, direction)
     }
 
-    // TODO put this in a gameobject class
     public void turnLeft() {
         this.direction = direction.turnLeft()
     }
