@@ -22,7 +22,7 @@ class Coordinates {
 
         // Translate coordinates with absolute position
         double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - middleOfImageWidth)) + GlobalValues.HEX_WIDTH_OFFSET;
-        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT * 2 / 3) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET);
+        double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT / 2) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET);
 
 
 

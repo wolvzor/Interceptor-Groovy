@@ -39,7 +39,7 @@ class GameCanvas extends Canvas{
                 missile.draw(graphics, scale, drawingOffset)
             }
 
-            movementHex.draw(graphics, scale, drawingOffset)
+            //movementHex.draw(graphics, scale, drawingOffset)
 
         } catch(IOException e){
             System.out.println("Load image error.");
