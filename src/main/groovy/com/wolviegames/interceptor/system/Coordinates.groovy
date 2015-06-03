@@ -3,6 +3,7 @@ package com.wolviegames.interceptor.system
 import com.wolviegames.interceptor.display.DrawingOffset
 import groovy.transform.Canonical
 
+import javax.xml.bind.annotation.XmlElementDecl
 import java.awt.*
 import java.awt.geom.AffineTransform
 import java.awt.image.BufferedImage
@@ -14,7 +15,36 @@ class Coordinates {
     int yCoord
     int offset
 
+
     void drawAtCoordinates(Graphics graphics, BufferedImage image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
+
+        // Determine center of X dimension and Y dimension of object
+        int middleOfImageHeight = image.getHeight()/2
+        int middleOfImageWidth = image.getWidth()/2
+
+
+
+        // Translate coordinates with absolute position
+        double xDimension = (xCoord * GlobalValues.HEX_WIDTH) - middleOfImageWidth;
+        double yDimension = (yCoord * GlobalValues.HEX_ACTUAL_HEIGHT * 2/3) - middleOfImageHeight;
+
+        // Traveling up/down the y dimension will shift the x dimension accordingly.
+        xDimension -= (yCoord * GlobalValues.HEX_WIDTH / 2)
+
+        //graphics.drawImage(image, (xDimension * scale).intValue(), (yDimension * scale).intValue(),
+        //        (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
+
+        // TODO: Oh dear gods, please clean this up.
+        AffineTransform saveAT = ((Graphics2D)graphics).getTransform();
+        direction.rotateImage(graphics, image, direction, (xDimension * scale).intValue() + drawingOffset.width_offset + (middleOfImageWidth * scale).intValue(),
+                (yDimension * scale).intValue() + drawingOffset.height_offset + (middleOfImageHeight * scale).intValue())
+        graphics.drawImage(image, (xDimension * scale).intValue() + drawingOffset.width_offset, (yDimension * scale).intValue() + drawingOffset.height_offset,
+                (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
+        ((Graphics2D)graphics).setTransform(saveAT)
+
+    }
+
+    /*void drawAtCoordinates(Graphics graphics, BufferedImage image, double scale = 1.0, DrawingOffset drawingOffset, Direction direction){
 
         // Determine center of X dimension and Y dimension of object
         int middleOfImageHeight = image.getHeight()/2
@@ -23,9 +53,6 @@ class Coordinates {
         // Translate coordinates with absolute position
         double xDimension = (((xCoord*GlobalValues.HEX_WIDTH) + GlobalValues.HEX_WIDTH / 2 - middleOfImageWidth)) + GlobalValues.HEX_WIDTH_OFFSET;
         double yDimension = ((yCoord * GlobalValues.HEX_HEIGHT/2) + (GlobalValues.HEX_HEIGHT / 2) - image.getHeight()) + (GlobalValues.HEX_HEIGHT_OFFSET);
-
-
-
 
         // Traveling up/down the y dimension will shift the x dimension accordingly.
         xDimension -= (GlobalValues.HEX_WIDTH / 2) * yCoord
@@ -37,6 +64,10 @@ class Coordinates {
         graphics.drawImage(image, (xDimension * scale).intValue() + drawingOffset.width_offset, (yDimension * scale).intValue() + drawingOffset.height_offset,
                 (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
         ((Graphics2D)graphics).setTransform(saveAT)
+    }*/
+
+    protected void calculateScreenPosition() {
+
     }
 
     Coordinates moveForward(Direction direction){
