@@ -87,8 +87,8 @@ public class GamePanel extends JPanel implements Runnable {
             // TODO Fix screen tearing :/
             public void mouseDragged(MouseEvent event){
                 //System.out.println("Mouse dragged! " + event)
-                drawingOffset.height_offset -= previousMousePositionY - event.getY()
-                drawingOffset.width_offset -= previousMousePositionX - event.getX()
+                drawingOffset.height_offset -= (previousMousePositionY - event.getY())
+                drawingOffset.width_offset -= (previousMousePositionX - event.getX())
                 previousMousePositionY = event.getY()
                 previousMousePositionX = event.getX()
             }
@@ -157,7 +157,9 @@ public class GamePanel extends JPanel implements Runnable {
             } else dbg = dbImage.getGraphics();
         }
 
-        gameCanvas.paint(dbg, scale, drawingOffset,teams, asteroids,missiles, movementTracker.movementHex)
+
+        DrawingOffset renderDrawingOffset = new DrawingOffset(drawingOffset);
+        gameCanvas.paint(dbg, scale, renderDrawingOffset,teams, asteroids,missiles, movementTracker.movementHex)
 
     }
 
