@@ -1,18 +1,19 @@
 package com.wolviegames.interceptor.display
 
+import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.GlobalValues;
 
 import java.awt.*;
 
 public class HexGrid {
 
-    HexTile hexTile;
+    GridHex gridHex;
     double scale =1.0
     int scaledHeight
     int scaledWidth
 
     HexGrid(double scale){
-        hexTile = new HexTile()
+        gridHex = new GridHex()
         this.scale = scale
         changeScale(scale)
     }
@@ -25,19 +26,22 @@ public class HexGrid {
 
     public void draw(Graphics graphics, int screenWidth, int screenHeight, DrawingOffset drawingOffset){
 
-        // Calculate where the first grid should really be drawn.
-        double modulo_height = drawingOffset.height_offset % scaledHeight
-        double modulo_width = drawingOffset.width_offset % scaledWidth
-        int height = 0 - (Math.abs(modulo_height)* scaledHeight)
+        // Calculate coordinates on screen
+        // kludging it in the meantime
+        int minXCoord = -10;
+        int minYCoord = -10;
+        int maxXCoord = 10;
+        int maxYCoord = 10;
 
-        int width
-        while(height < (screenHeight + Math.abs(drawingOffset.height_offset))) {
-            width = 0 - (Math.abs(modulo_width) * scaledWidth)
-            while(width < (screenWidth + Math.abs(drawingOffset.width_offset))) {
-                hexTile.draw(graphics, width, height, scale, drawingOffset)
-                width += scaledWidth
+        int xCoord = minXCoord
+        while(xCoord < maxXCoord) {
+            int yCoord = minYCoord
+            while(yCoord < maxYCoord) {
+                gridHex.coordinates = new Coordinates(xCoord,yCoord)
+                gridHex.draw(graphics, scale, drawingOffset)
+                yCoord++
             }
-            height += scaledHeight
+            xCoord++
         }
     }
 
