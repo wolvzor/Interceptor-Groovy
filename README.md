@@ -11,9 +11,10 @@ TODO (short term):
 - Clean up current images (asteroids)
 
 TODO (near):
+- Fix the fucking screen tearing bullshit
 - targeting phase and targeting assignments
 - basic weapon resolve phase
-- armor/shield rep for fighers
+- armor/shield rep for fighters
 - weapon templates
 - resolve weapon effects on fighter shield/fighter
 - internal damage point counter

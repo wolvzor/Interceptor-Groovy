@@ -1,7 +1,7 @@
 package com.wolviegames.interceptor.display
 
 import com.wolviegames.interceptor.system.Coordinates
-import com.wolviegames.interceptor.system.GlobalValues;
+import com.wolviegames.interceptor.system.InterceptorConstant;
 
 import java.awt.*;
 
@@ -20,8 +20,8 @@ public class HexGrid {
 
     public void changeScale(double scale){
         this.scale = scale
-        scaledHeight = (GlobalValues.HEX_HEIGHT * scale).intValue()
-        scaledWidth = (GlobalValues.HEX_WIDTH * scale).intValue()
+        scaledHeight = (InterceptorConstant.HEX_HEIGHT * scale).intValue()
+        scaledWidth = (InterceptorConstant.HEX_WIDTH * scale).intValue()
     }
 
     public void draw(Graphics graphics, int screenWidth, int screenHeight, DrawingOffset drawingOffset){

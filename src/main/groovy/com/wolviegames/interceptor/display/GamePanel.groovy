@@ -10,6 +10,7 @@ import com.wolviegames.interceptor.system.Coordinates
 import com.wolviegames.interceptor.system.DiceRoller
 import com.wolviegames.interceptor.system.Direction
 import com.wolviegames.interceptor.system.LoadResources
+import com.wolviegames.interceptor.system.InterceptorConstant;
 
 import javax.swing.*
 import java.awt.*
@@ -97,8 +98,8 @@ public class GamePanel extends JPanel implements Runnable {
         // As well as for mouse wheel listeners. >.>
         addMouseWheelListener(new MouseAdapter() {
             public void mouseWheelMoved(MouseWheelEvent event) {
-                scale -= (event.getWheelRotation()/25)
-                if (scale < 0.1) scale = 0.1
+                scale -= (event.getWheelRotation()/InterceptorConstant.MOUSE_ZOOM_INCREMENT)
+                if (scale < InterceptorConstant.MOUSE_ZOOM_MIN) scale = InterceptorConstant.MOUSE_ZOOM_MIN
                 System.out.println("Mouse wheel moved! " + event)
                 System.out.println(scale)
             }

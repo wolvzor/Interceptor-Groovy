@@ -3,7 +3,6 @@ package com.wolviegames.interceptor.system
 import com.wolviegames.interceptor.display.DrawingOffset
 import groovy.transform.Canonical
 
-import javax.xml.bind.annotation.XmlElementDecl
 import java.awt.*
 import java.awt.geom.AffineTransform
 import java.awt.image.BufferedImage
@@ -25,11 +24,11 @@ class Coordinates {
 
 
         // Translate coordinates with absolute position
-        double xDimension = (xCoord * GlobalValues.HEX_WIDTH) - middleOfImageWidth;
-        double yDimension = (yCoord * GlobalValues.HEX_ACTUAL_HEIGHT * 2/3) - middleOfImageHeight;
+        double xDimension = ((double)xCoord * InterceptorConstant.HEX_WIDTH) - middleOfImageWidth;
+        double yDimension = ((double)yCoord * InterceptorConstant.HEX_ACTUAL_HEIGHT * 2/3) - middleOfImageHeight;
 
         // Traveling up/down the y dimension will shift the x dimension accordingly.
-        xDimension -= (yCoord * GlobalValues.HEX_WIDTH / 2)
+        xDimension -= (yCoord * InterceptorConstant.HEX_WIDTH / 2)
 
         //graphics.drawImage(image, (xDimension * scale).intValue(), (yDimension * scale).intValue(),
         //        (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
@@ -38,8 +37,8 @@ class Coordinates {
         AffineTransform saveAT = ((Graphics2D)graphics).getTransform();
         direction.rotateImage(graphics, image, direction, (xDimension * scale).intValue() + drawingOffset.width_offset + (middleOfImageWidth * scale).intValue(),
                 (yDimension * scale).intValue() + drawingOffset.height_offset + (middleOfImageHeight * scale).intValue())
-        graphics.drawImage(image, (xDimension * scale).intValue() + drawingOffset.width_offset, (yDimension * scale).intValue() + drawingOffset.height_offset,
-                (image.getWidth()*scale).intValue(), (image.getHeight()*scale).intValue(), null);
+        graphics.drawImage(image, Math.floor(xDimension * scale).intValue() + drawingOffset.width_offset, Math.floor(yDimension * scale).intValue() + drawingOffset.height_offset,
+                Math.floor(image.getWidth()*scale).intValue(), Math.floor(image.getHeight()*scale).intValue(), null);
         ((Graphics2D)graphics).setTransform(saveAT)
 
     }
